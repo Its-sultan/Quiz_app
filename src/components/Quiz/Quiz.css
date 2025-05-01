@@ -1,15 +1,15 @@
 .container{
-    width: 640px;
+    width: 427px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 20px;
     background: #fff;
     color: #262626;
-    border-radius: 10px;
+    border-radius: 14px;
     display:flex;
     flex-direction: column;
     gap: 20px;
-    padding: 40px 50px;
-    height: 100%;
+    padding: 25px 50px;
+
 }
 
 .container hr{
@@ -18,30 +18,39 @@
     background: #707070;
 }
 
+.container h1{
+    font-size: 25px;
+    font-weight: 600;
+    text-align:start;
+    color: #262626;
+}
+
 .container h2{
-    font-size: 27px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .container ul li{
+    width:400px;
     display: flex;
     align-items: center;
-    height:70px;
+    height:50px;
     padding-left:15px ;
-    border: 1px solid #686868;
+    border: 1px solid #4b4b4b;
     border-radius: 8px;
     margin-bottom: 20px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 450;
 }
 
 .container button{
-    margin:auto;
-    width: 250px;
-    height: 65px;
+    margin-left:315px;
+    width: 100px;
+    height: 45px;
     background: #553f9a;
     color: #fff;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500;
     border-radius: 8px;
     cursor: pointer;
@@ -49,10 +58,10 @@
 
 .container .index {
     margin: auto;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 530;
     color: #262626;
-    margin-right: 10px;
+    margin-right: 14px;
 }
 
 .container .correct{
@@ -64,3 +73,4 @@
     background: #FFEBEB;
     border-color: #FF4A4A;
 }
+

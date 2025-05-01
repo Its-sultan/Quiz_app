@@ -5,6 +5,10 @@
 
 body{
   height: 100vh;
-  background-image:linear-gradient(#D8C7FF, #19006C);
+  /* background-image:linear-gradient(#D8C7FF, #19006C); */
+  background-image: url('./assets/maze.avif') ;
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: 'poppins';
+  font-size: small;
 }
