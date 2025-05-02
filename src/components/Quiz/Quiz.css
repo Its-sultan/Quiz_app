@@ -74,3 +74,28 @@
     border-color: #FF4A4A;
 }
 
+.time {
+    font-size: 9px;
+    font-weight: 300;
+    color: #262626;
+    margin-left: 270px;
+    margin-top: -50px;
+}
+
+
+.quiz .back-button {
+  
+    padding: 5px 10px;
+    border: none;
+    border-radius: 25px;
+    background: #080a0a;
+    color: white;
+    font-size: 1.29rem;
+    font-weight: 1000;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #15ed88;
+  }

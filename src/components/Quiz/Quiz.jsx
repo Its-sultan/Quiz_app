@@ -1,15 +1,18 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import './Quiz.css'
-import { data }from '../../assets/data.js'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { data } from '../../assets/data.js'
 
 const Quiz = () => {
+
+  const navigate = useNavigate();
 
     let [index,setIndex] = useState(0);
     let [question,setQuestion] = useState(data[index]);
     let [lock,setLock] = useState(false);
     let [score,setScore] = useState(0);
     let [result,setResult] = useState(false);
+    let [time,setTime] = useState(15);
 
     let Option1 = useRef(null);
     let Option2 = useRef(null);
@@ -25,9 +28,8 @@ const Quiz = () => {
           if (question.ans===ans){
             e.target.classList.add("correct");
             setLock(true);
-            setScore(prev=>prev+1);
-           }
-          else{
+            setScore(prev => prev + 1);
+           }else{
             e.target.classList.add("wrong");
             setLock(true);
             option_array[question.ans-1].current.classList.add("correct");
@@ -35,22 +37,27 @@ const Quiz = () => {
         }
       }
 
-      const next = () => {
-          if(lock === true){
-             if(index === data.length-1){
+      const next = (force = false) => {
+          if(lock === true || force === true){
+             if(index === data.length -1){
                 setResult(true);
                 alert(`Your score is ${score} out of ${data.length}`);
-              }
-            setIndex(++index);
-            setQuestion(data[index]);
+              } else {
+              const newIndex = index + 1;
+              setIndex(newIndex);
+              setQuestion(data[newIndex]);
+              setTime(15); // Reset timer for the next question
+            // setIndex(++index);
+            // setQuestion(data[index]);
+          }
             setLock(false);
-            option_array.map((option)=> {
+            option_array.forEach((option)=> {
               option.current.classList.remove("wrong");
               option.current.classList.remove("correct");
               return null;
-            })
+            });
           }
-      }
+      };
 
       const reset = () => {
         setIndex(0);
@@ -58,13 +65,35 @@ const Quiz = () => {
         setScore(0);
         setLock(false);
         setResult(false);
+        setTime(15);
 
-      }
+      };
 
+      useEffect(() => {
+        if(result) return; // Don't reset timer if quiz is finished
+
+      const timer = setInterval(() => {
+        setTime(prev => {
+          if (prev === 1) {
+            clearInterval(timer);
+            next(true); // Auto-next when time runs out
+            return 15;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(timer); // Cleanup on unmount or question change
+}, [index, lock]); // Reset timer when index or lock changes
+
+  
 
   return (
+    <div className='quiz'>
+    <button className="back-button" onClick={() => navigate('/')}>⬅</button>
     <div className='container'>
       <h1>Quiz App</h1>
+      <h2 className='time'>Time Left: {time} secs</h2>
       <hr/>
         {result?<></>:<>
 
@@ -85,7 +114,12 @@ const Quiz = () => {
         
         </>:<></>}
     </div>
-  )
-}
+  </div>
+  );
+
+
+};
+
+
 
 export default Quiz
