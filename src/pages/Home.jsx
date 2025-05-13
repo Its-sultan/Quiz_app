@@ -13,7 +13,7 @@ const Home = () => {
 
         <div className='home-content'>
       
-          <h1 className='fade-in'> Welcome to the Quiz App</h1>
+          <h1 className='fade-in'> Welcome to the Quiz App Mofo!</h1>
           <p className='fade-in delay-1'>
             Test your knowledge across tech, general knowledge, and more.<br />
             Learn while having fun with our interactive quizzes!

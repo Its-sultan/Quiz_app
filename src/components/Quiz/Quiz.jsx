@@ -41,7 +41,7 @@ const Quiz = () => {
           if(lock === true || force === true){
              if(index === data.length -1){
                 setResult(true);
-                alert(`Your score is ${score} out of ${data.length}`);
+               
               } else {
               const newIndex = index + 1;
               setIndex(newIndex);
